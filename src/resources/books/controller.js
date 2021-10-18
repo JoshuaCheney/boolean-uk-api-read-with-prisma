@@ -34,9 +34,14 @@ function getBooksByFiction(req, res) {
     console.log("req.query", req.query)
     prisma.book.findMany({
         where: {
-            AND [
+            AND: [
                 {
                 type: "fiction"
+            },
+            {
+                topic: {
+                    equals: "fantasy"
+                }
             }
             ]
         }
