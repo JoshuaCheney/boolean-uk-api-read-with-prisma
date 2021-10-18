@@ -4,6 +4,9 @@ const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
 
+const booksRouter = require("./resources/books/router")
+// const petsRouter = require("./resources/pets/router")
+
 const app = express()
 
 /* SETUP MIDDLEWARE */
@@ -16,6 +19,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(morgan("dev"))
 
 /* SETUP ROUTES */
+
+app.use("/books", booksRouter)
+// app.use("/pets", petsRouter)
 
 app.get("*", (req, res) => {
   res.json({ ok: true })
